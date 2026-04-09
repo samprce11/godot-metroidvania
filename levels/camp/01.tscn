@@ -7,9 +7,7 @@
 [ext_resource type="TileSet" uid="uid://dot3poaq8gefu" path="res://levels/tilesets/camp_hideout.tres" id="4_iycms"]
 [ext_resource type="TileSet" uid="uid://bt1t0rrmhjrb1" path="res://levels/tilesets/camp_props.tres" id="5_bda3b"]
 [ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://player/scripts/level_bounds.gd" id="7_3404h"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3404h"]
-size = Vector2(10, 438)
+[ext_resource type="PackedScene" uid="uid://b15n2h4gumrl0" path="res://levels/invisible_wall.tscn" id="8_wor5k"]
 
 [node name="01" type="Node2D" unique_id=448247927]
 
@@ -76,15 +74,7 @@ z_index = 256
 script = ExtResource("7_3404h")
 metadata/_custom_type_script = "uid://v3vu3ivu0nrh"
 
-[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1278736940]
+[node name="LeftWall" parent="." unique_id=1760876740 instance=ExtResource("8_wor5k")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=757903835]
-position = Vector2(-5, 104)
-shape = SubResource("RectangleShape2D_3404h")
-
-[node name="RightWall" type="StaticBody2D" parent="." unique_id=1535732678]
-position = Vector2(490, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=196604897]
-position = Vector2(-5, 104)
-shape = SubResource("RectangleShape2D_3404h")
+[node name="RightWall" parent="." unique_id=1718708934 instance=ExtResource("8_wor5k")]
+position = Vector2(484, 1)
