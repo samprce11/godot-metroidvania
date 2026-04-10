@@ -1,10 +1,14 @@
 [gd_scene format=4 uid="uid://bvs4w4aelop8k"]
 
 [ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://player/scripts/level_bounds.gd" id="1_uqfan"]
+[ext_resource type="Texture2D" uid="uid://bt5t81i4c8i3f" path="res://levels/backgrounds/camp/bg.png" id="2_jw2lc"]
 [ext_resource type="TileSet" uid="uid://dot3poaq8gefu" path="res://levels/tilesets/camp_hideout.tres" id="2_srafd"]
 [ext_resource type="TileSet" uid="uid://bcikqct2fgc6j" path="res://levels/tilesets/ancient_caves_1.tres" id="2_vxrhf"]
+[ext_resource type="Texture2D" uid="uid://g50el0ampl86" path="res://levels/backgrounds/camp/bg2.png" id="3_rv8qu"]
+[ext_resource type="Texture2D" uid="uid://72dur61wc5hg" path="res://levels/backgrounds/camp/bg3.png" id="4_0f3nf"]
 [ext_resource type="PackedScene" uid="uid://b15n2h4gumrl0" path="res://general/scenes/invisible_wall.tscn" id="5_4i07p"]
 [ext_resource type="PackedScene" uid="uid://bo3e8lnkblg3v" path="res://general/scenes/level_transition.tscn" id="5_frvr3"]
+[ext_resource type="Texture2D" uid="uid://ck3iyg2wbxcv1" path="res://levels/backgrounds/camp/bg4.png" id="5_oeoit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4i07p"]
 size = Vector2(78, 7)
@@ -15,6 +19,34 @@ size = Vector2(78, 7)
 z_index = 256
 script = ExtResource("1_uqfan")
 metadata/_custom_type_script = "uid://v3vu3ivu0nrh"
+
+[node name="Parallax0" type="Parallax2D" parent="." unique_id=1750325084]
+scroll_scale = Vector2(0.1, 0.1)
+
+[node name="Background0" type="Sprite2D" parent="Parallax0" unique_id=1164838199]
+position = Vector2(238, 77)
+texture = ExtResource("2_jw2lc")
+
+[node name="Parallax1" type="Parallax2D" parent="." unique_id=985936983]
+scroll_scale = Vector2(0.3, 0.3)
+
+[node name="Background1" type="Sprite2D" parent="Parallax1" unique_id=1392737124]
+position = Vector2(238, 77)
+texture = ExtResource("3_rv8qu")
+
+[node name="Parallax2" type="Parallax2D" parent="." unique_id=646618585]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="Background2" type="Sprite2D" parent="Parallax2" unique_id=1814467958]
+position = Vector2(238, 77)
+texture = ExtResource("4_0f3nf")
+
+[node name="Parallax3" type="Parallax2D" parent="." unique_id=2086771255]
+scroll_scale = Vector2(0.8, 0.8)
+
+[node name="Background3" type="Sprite2D" parent="Parallax3" unique_id=1239287678]
+position = Vector2(238, 77)
+texture = ExtResource("5_oeoit")
 
 [node name="Background Props" type="TileMapLayer" parent="." unique_id=1921013469]
 tile_map_data = PackedByteArray("AAAOAAgAAAAJAAcAAAAOAAkAAAAJAAgAAAAPAAgAAAAKAAcAAAAPAAkAAAAKAAgAAAAQAAgAAAALAAcAAAAQAAkAAAALAAgAAAARAAkAAAAMAAgAAAAUAAQAAAANAAMAAAAVAAMAAAAOAAIAAAAVAAQAAAAOAAMAAAAVAAUAAAAOAAQAAAAVAAYAAAAOAAUAAAAVAAcAAAAOAAYAAAAVAAkAAAAOAAgAAAAWAAIAAAAPAAEAAAAWAAMAAAAPAAIAAAAWAAQAAAAPAAMAAAAWAAUAAAAPAAQAAAAWAAYAAAAPAAUAAAAWAAcAAAAPAAYAAAAWAAkAAAAPAAgAAAAXAAIAAAAQAAEAAAAXAAMAAAAQAAIAAAAXAAQAAAAQAAMAAAAXAAUAAAAQAAQAAAAXAAYAAAAQAAUAAAAXAAcAAAAQAAYAAAAXAAgAAAAQAAcAAAAXAAkAAAAQAAgAAAAYAAIAAAARAAEAAAAYAAMAAAARAAIAAAAYAAQAAAARAAMAAAAYAAUAAAARAAQAAAAYAAYAAAARAAUAAAAYAAcAAAARAAYAAAAYAAgAAAARAAcAAAAYAAkAAAARAAgAAAAZAAMAAAASAAIAAAAZAAQAAAASAAMAAAAZAAUAAAASAAQAAAAZAAYAAAASAAUAAAAZAAcAAAASAAYAAAAZAAgAAAASAAcAAAAZAAkAAAASAAgAAAAaAAMAAAATAAIAAAAaAAQAAAATAAMAAAAaAAUAAAATAAQAAAAaAAYAAAATAAUAAAAaAAcAAAATAAYAAAAaAAgAAAATAAcAAAAaAAkAAAATAAgAAAAbAAUAAAAUAAQAAAAbAAYAAAAUAAUAAAAbAAcAAAAUAAYAAAAbAAgAAAAUAAcAAAAbAAkAAAAUAAgAAAAcAAkAAAAVAAgAAAAdAAkAAAAWAAgAAAA=")
@@ -55,10 +87,13 @@ one_way_collision = true
 [node name="LevelTransition" parent="." unique_id=1402524409 instance=ExtResource("5_frvr3")]
 position = Vector2(2, 160)
 size = 20
+location = 0
 target_level = "uid://h8atrsag3yar"
+target_level_scene = "LevelTransition"
 
 [node name="LevelTransition2" parent="." unique_id=1368118301 instance=ExtResource("5_frvr3")]
 position = Vector2(112, 253)
 size = 5
 location = 3
 target_level = "uid://d1xjjlyb54k8p"
+target_level_scene = "LevelTransition"
