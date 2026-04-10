@@ -245,8 +245,8 @@ height = 14.0
 font = ExtResource("8_rgyib")
 font_size = 11
 
-[node name="Player" type="CharacterBody2D" unique_id=1563766316]
-collision_layer = 0
+[node name="Player" type="CharacterBody2D" unique_id=1563766316 groups=["Player"]]
+collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_oul6g")
 movement_speed = 125.0

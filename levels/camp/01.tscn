@@ -7,7 +7,8 @@
 [ext_resource type="TileSet" uid="uid://dot3poaq8gefu" path="res://levels/tilesets/camp_hideout.tres" id="4_iycms"]
 [ext_resource type="TileSet" uid="uid://bt1t0rrmhjrb1" path="res://levels/tilesets/camp_props.tres" id="5_bda3b"]
 [ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://player/scripts/level_bounds.gd" id="7_3404h"]
-[ext_resource type="PackedScene" uid="uid://b15n2h4gumrl0" path="res://levels/invisible_wall.tscn" id="8_wor5k"]
+[ext_resource type="PackedScene" uid="uid://b15n2h4gumrl0" path="res://general/scenes/invisible_wall.tscn" id="8_wor5k"]
+[ext_resource type="PackedScene" uid="uid://bo3e8lnkblg3v" path="res://general/scenes/level_transition.tscn" id="9_0jldp"]
 
 [node name="01" type="Node2D" unique_id=448247927]
 
@@ -67,7 +68,7 @@ tile_set = ExtResource("4_iycms")
 
 [node name="Player" parent="." unique_id=1563766316 instance=ExtResource("2_54y1t")]
 z_index = 1
-position = Vector2(57, 126)
+position = Vector2(426, 183)
 
 [node name="LevelBounds" type="Node2D" parent="." unique_id=1248126912]
 z_index = 256
@@ -77,4 +78,10 @@ metadata/_custom_type_script = "uid://v3vu3ivu0nrh"
 [node name="LeftWall" parent="." unique_id=1760876740 instance=ExtResource("8_wor5k")]
 
 [node name="RightWall" parent="." unique_id=1718708934 instance=ExtResource("8_wor5k")]
-position = Vector2(484, 1)
+position = Vector2(488, 0)
+
+[node name="LevelTransition" parent="." unique_id=1402524409 instance=ExtResource("9_0jldp")]
+position = Vector2(477, 192)
+size = 10
+location = 1
+target_level = "uid://bvs4w4aelop8k"
