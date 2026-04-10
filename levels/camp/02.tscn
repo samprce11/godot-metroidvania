@@ -74,13 +74,12 @@ position = Vector2(489, -13)
 [node name="LeftWall2" parent="." unique_id=1717714748 instance=ExtResource("5_4i07p")]
 position = Vector2(1, -10)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=265281790]
-position = Vector2(-1, 33)
+[node name="OneWay" type="StaticBody2D" parent="." unique_id=265281790]
+position = Vector2(152, 225)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1884833032]
-position = Vector2(152, 193.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OneWay" unique_id=1884833032]
 shape = SubResource("RectangleShape2D_4i07p")
 one_way_collision = true
 
