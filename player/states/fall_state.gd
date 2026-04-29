@@ -13,7 +13,12 @@ func init() -> void:
 	
 # what happens when we enter this state?
 func enter() -> void:
-	player.sprite.animation = "fall";
+	if player.states[2] == crouch and player.states[1] == jump:
+		player.ledge_grab.disabled = true;
+	else:
+		player.ledge_grab.disabled = false;
+	
+	player.sprite.play("fall");
 	
 	player.gravity_multiplier = fall_gravity_multiplier;
 	
@@ -50,12 +55,16 @@ func process(_delta: float) -> PlayerState:
 
 # what happens each physics process in this state?
 func physics_process(_delta: float) -> PlayerState:
+	if player.wall_check.is_colliding() and not player.floor_check.is_colliding() and player.velocity.y == 0:
+		return ledge_grab_state;
+		
+		
 	if player.is_on_floor():
-		player.add_debug_indicator(Color.RED);
+		# player.add_debug_indicator(Color.RED);
 		if jump_buffer_timer > 0:
 			return jump;
 		return idle;
 		
 	player.velocity.x = player.direction.x * player.movement_speed;
-		
+	
 	return next_state;

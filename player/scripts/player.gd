@@ -7,6 +7,10 @@ const DEBUG_JUMP_INDICATOR = preload("uid://dlipckkyx6nxe");
 @onready var collision_stand: CollisionShape2D = $CollisionStand;
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch;
 @onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast;
+@onready var wall_check: ShapeCast2D = $WallCheck
+@onready var floor_check: RayCast2D = $FloorCheck
+@onready var ledge_grab: CollisionShape2D = $LedgeGrab
+@onready var top_check: ShapeCast2D = $TopCheck
 #endregion
 
 #region export variables
@@ -25,12 +29,13 @@ var previous_state: PlayerState :
 var direction: Vector2 = Vector2.ZERO;
 var gravity: float = 980;
 var gravity_multiplier: float = 1.0;
+var in_ledge_grab_state: bool = false;
 #endregion
 
 func _ready() -> void:
 	if get_tree().get_first_node_in_group("Player") != self:
 		self.queue_free();
-		
+	
 	initialize_states();
 	self.call_deferred("reparent", get_tree().root);
 	
@@ -48,6 +53,9 @@ func _process(_delta: float) -> void:
 	pass;
 
 func _physics_process(_delta: float) -> void:
+	if (states.front() == IdleState) or (states.front() == RunState) or (states.front() != LedgeGrabState and top_check.is_colliding()):
+		ledge_grab.disabled = true;
+	
 	velocity.y += gravity * gravity_multiplier * _delta;
 	move_and_slide();
 	change_state(current_state.physics_process(_delta));
@@ -88,6 +96,9 @@ func change_state(state: PlayerState) -> void:
 	pass;
 	
 func update_direction():
+	if current_state == LedgeGrabState:
+		print(current_state.name);
+		
 	var previous_direction: Vector2 = direction;
 	
 	var x_axis = Input.get_axis("left", "right");
@@ -98,7 +109,7 @@ func update_direction():
 	if previous_direction.x != direction.x:
 		if direction.x < 0:
 			sprite.scale.x = -1;
-		
+	
 		if direction.x > 0:
 			sprite.scale.x = 1;
 	

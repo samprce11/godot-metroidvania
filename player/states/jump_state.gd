@@ -9,9 +9,14 @@ func init() -> void:
 	
 # what happens when we enter this state?
 func enter() -> void:
-	player.sprite.animation = "jump";
+	player.sprite.play("jump");
 	
-	player.add_debug_indicator(Color.PALE_GREEN);
+	# player.add_debug_indicator(Color.PALE_GREEN);
+	
+	if player.previous_state != crouch:
+		player.ledge_grab.disabled = false;
+	else:
+		player.ledge_grab.disabled = true;
 
 	player.velocity.y = -jump_velocity;
 	if player.previous_state == fall and not Input.is_action_pressed("jump"):
@@ -40,14 +45,17 @@ func process(_delta: float) -> PlayerState:
 
 # what happens each physics process in this state?
 func physics_process(_delta: float) -> PlayerState:
+	if player.wall_check.is_colliding() and not player.floor_check.is_colliding() and player.velocity.y == 0:
+		return ledge_grab_state;
+		
 	if player.is_on_floor():
 		return idle;
 	
 	if player.velocity.y >= 0:
-		player.add_debug_indicator(Color.YELLOW);
-		
+		# player.add_debug_indicator(Color.YELLOW);
 		return fall;
 		
 	player.velocity.x = player.direction.x * player.movement_speed;
 	
 	return next_state;
+	

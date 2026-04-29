@@ -4,11 +4,12 @@ var player: Player;
 var next_state: PlayerState;
 
 #region state references
-@onready var idle: PlayerStateIdle = %Idle
-@onready var run: PlayerStateRun = %Run
+@onready var idle: IdleState = %Idle
+@onready var run: RunState = %Run
 @onready var jump: JumpState = %Jump
 @onready var fall: FallState = %Fall
-@onready var crouch: PlayerStateCrouch = %Crouch
+@onready var crouch: CrouchState = %Crouch
+@onready var ledge_grab_state: LedgeGrabState = %LedgeGrabState
 #endregion
 
 # what happens when this state is initialized?

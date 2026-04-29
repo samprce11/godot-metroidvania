@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c8ovk2prfdm2i" path="res://player/states/fall_state.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://bw5ud5qdph2j2" path="res://player/states/crouch_state.gd" id="6_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://d4kjp2erpyktx" path="res://player/sprites/Sword Master Sprite Sheet 90x37.png" id="7_boad6"]
+[ext_resource type="Script" uid="uid://bq1b2v6s7kfef" path="res://player/states/legde_grab.gd" id="8_hg6s5"]
 [ext_resource type="FontFile" uid="uid://d070uplol7dk7" path="res://fonts/m5x7.ttf" id="8_rgyib"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
@@ -88,6 +89,42 @@ region = Rect2(180, 518, 90, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jd2rm"]
 atlas = ExtResource("7_boad6")
 region = Rect2(270, 518, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q28gw"]
+atlas = ExtResource("7_boad6")
+region = Rect2(0, 703, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge24q"]
+atlas = ExtResource("7_boad6")
+region = Rect2(90, 703, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnw6m"]
+atlas = ExtResource("7_boad6")
+region = Rect2(180, 703, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1so5t"]
+atlas = ExtResource("7_boad6")
+region = Rect2(270, 703, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55jnj"]
+atlas = ExtResource("7_boad6")
+region = Rect2(0, 740, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx5ib"]
+atlas = ExtResource("7_boad6")
+region = Rect2(90, 740, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2xo5"]
+atlas = ExtResource("7_boad6")
+region = Rect2(180, 740, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_art4l"]
+atlas = ExtResource("7_boad6")
+region = Rect2(270, 740, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjxoa"]
+atlas = ExtResource("7_boad6")
+region = Rect2(360, 740, 90, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
 atlas = ExtResource("7_boad6")
@@ -201,7 +238,44 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q28gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge24q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnw6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1so5t")
+}],
+"loop": false,
+"name": &"land",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55jnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx5ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2xo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_art4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjxoa")
+}],
+"loop": true,
+"name": &"ledge_grab",
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -245,11 +319,27 @@ height = 14.0
 font = ExtResource("8_rgyib")
 font_size = 11
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgyib"]
+size = Vector2(10, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg6s5"]
+size = Vector2(12, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t03j"]
+size = Vector2(12, 4)
+
 [node name="Player" type="CharacterBody2D" unique_id=1563766316 groups=["Player"]]
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_oul6g")
 movement_speed = 125.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1284716054]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_32hag")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(17.155, 0)
 
 [node name="States" type="Node" parent="." unique_id=1741307279]
 
@@ -278,13 +368,9 @@ unique_name_in_owner = true
 script = ExtResource("6_g6k8r")
 deceleration_rate = 10.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1284716054]
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_32hag")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.7552287
-offset = Vector2(17.155, 0)
+[node name="LedgeGrabState" type="Node" parent="States" unique_id=1783114338]
+unique_name_in_owner = true
+script = ExtResource("8_hg6s5")
 
 [node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=675178177]
 position = Vector2(0, -11.5)
@@ -296,6 +382,7 @@ shape = SubResource("CapsuleShape2D_rgyib")
 disabled = true
 
 [node name="Label" type="Label" parent="." unique_id=1974201513]
+visible = false
 offset_left = -33.0
 offset_top = -35.0
 offset_right = 35.0
@@ -314,3 +401,21 @@ collision_mask = 2
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1748196868]
 position = Vector2(0, -20)
 zoom = Vector2(1.75, 1.75)
+
+[node name="LedgeGrab" type="CollisionShape2D" parent="." unique_id=1614440949]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_rgyib")
+
+[node name="WallCheck" type="ShapeCast2D" parent="." unique_id=435285512]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_hg6s5")
+target_position = Vector2(0, 7)
+
+[node name="FloorCheck" type="RayCast2D" parent="." unique_id=812410648]
+position = Vector2(0, -14)
+target_position = Vector2(0, 18)
+
+[node name="TopCheck" type="ShapeCast2D" parent="." unique_id=339405760]
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_8t03j")
+target_position = Vector2(0, 0)

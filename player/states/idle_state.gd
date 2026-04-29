@@ -1,4 +1,4 @@
-class_name PlayerStateIdle extends PlayerState
+class_name IdleState extends PlayerState
 
 # what happens when this state is initialized?
 func init() -> void:
@@ -6,8 +6,15 @@ func init() -> void:
 	
 # what happens when we enter this state?
 func enter() -> void:
-	player.sprite.animation = "idle";
+	player.ledge_grab.disabled = true;
 	
+	if player.previous_state == fall:
+		player.sprite.play("land");
+		await player.sprite.animation_finished;
+		player.sprite.play("idle");
+	else:
+		player.sprite.play("idle");
+		
 	pass;
 
 # what happens when we exit this state?

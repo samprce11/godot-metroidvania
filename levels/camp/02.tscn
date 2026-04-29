@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bvs4w4aelop8k"]
 
-[ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://player/scripts/level_bounds.gd" id="1_uqfan"]
+[ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://general/scripts/level_bounds.gd" id="1_uqfan"]
 [ext_resource type="Texture2D" uid="uid://bt5t81i4c8i3f" path="res://levels/backgrounds/camp/bg.png" id="2_jw2lc"]
 [ext_resource type="TileSet" uid="uid://dot3poaq8gefu" path="res://levels/tilesets/camp_hideout.tres" id="2_srafd"]
 [ext_resource type="TileSet" uid="uid://bcikqct2fgc6j" path="res://levels/tilesets/ancient_caves_1.tres" id="2_vxrhf"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ck3iyg2wbxcv1" path="res://levels/backgrounds/camp/bg4.png" id="5_oeoit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4i07p"]
-size = Vector2(78, 7)
+size = Vector2(78, 0)
 
 [node name="02" type="Node2D" unique_id=307235381]
 
@@ -80,6 +80,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OneWay" unique_id=1884833032]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_4i07p")
 one_way_collision = true
 

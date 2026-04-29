@@ -1,4 +1,4 @@
-class_name PlayerStateCrouch extends PlayerState
+class_name CrouchState extends PlayerState
 
 @export var deceleration_rate: float;
 

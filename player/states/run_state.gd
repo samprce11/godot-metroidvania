@@ -1,4 +1,4 @@
-class_name PlayerStateRun extends PlayerState
+class_name RunState extends PlayerState
 
 # what happens when this state is initialized?
 func init() -> void:
@@ -6,7 +6,8 @@ func init() -> void:
 	
 # what happens when we enter this state?
 func enter() -> void:
-	player.sprite.animation = "run";
+	player.ledge_grab.disabled = true;
+	player.sprite.play("run");
 	
 	pass;
 

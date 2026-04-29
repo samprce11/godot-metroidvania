@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://d1xjjlyb54k8p"]
 
 [ext_resource type="Texture2D" uid="uid://crsb6ux0pdhxj" path="res://levels/backgrounds/base dark parralax/2-super far.png" id="1_og5oq"]
-[ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://player/scripts/level_bounds.gd" id="1_s87qy"]
+[ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://general/scripts/level_bounds.gd" id="1_s87qy"]
 [ext_resource type="Texture2D" uid="uid://bymckqqbtkuv8" path="res://levels/backgrounds/base dark parralax/3-far.png" id="2_n25yt"]
 [ext_resource type="TileSet" uid="uid://bcikqct2fgc6j" path="res://levels/tilesets/ancient_caves_1.tres" id="2_og5oq"]
 [ext_resource type="Texture2D" uid="uid://dlyjb33fauk6v" path="res://levels/backgrounds/base dark parralax/5-close.png" id="3_0vvrj"]
@@ -19,7 +19,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s87qy"]
-size = Vector2(78, 7)
+size = Vector2(78, 0)
 
 [node name="03" type="Node2D" unique_id=610344968]
 
@@ -77,6 +77,6 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OneWay" unique_id=203174798]
-position = Vector2(-48, -158)
+position = Vector2(-48, -161)
 shape = SubResource("RectangleShape2D_s87qy")
 one_way_collision = true

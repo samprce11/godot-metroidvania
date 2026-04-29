@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ck3iyg2wbxcv1" path="res://levels/backgrounds/camp/bg4.png" id="4_cy0u8"]
 [ext_resource type="TileSet" uid="uid://dot3poaq8gefu" path="res://levels/tilesets/camp_hideout.tres" id="4_iycms"]
 [ext_resource type="TileSet" uid="uid://bt1t0rrmhjrb1" path="res://levels/tilesets/camp_props.tres" id="5_bda3b"]
-[ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://player/scripts/level_bounds.gd" id="7_3404h"]
+[ext_resource type="Script" uid="uid://v3vu3ivu0nrh" path="res://general/scripts/level_bounds.gd" id="7_3404h"]
 [ext_resource type="PackedScene" uid="uid://b15n2h4gumrl0" path="res://general/scenes/invisible_wall.tscn" id="8_wor5k"]
 [ext_resource type="PackedScene" uid="uid://bo3e8lnkblg3v" path="res://general/scenes/level_transition.tscn" id="9_0jldp"]
 
